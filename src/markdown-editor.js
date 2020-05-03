@@ -2,11 +2,10 @@
 
 import React, { PropTypes } from 'react'
 
-const MarkDownEditor = ({value, handleChange}) => (
+const MarkDownEditor = ({value, handleChange, getMarkup}) => (
   <div className='editor'>
-    <textarea value={value} onChange={handleChange} />
-    <div className='view'>
-      {value}
+    <textarea value={value} onChange={handleChange} autoFocus/>
+    <div className='view' dangerouslySetInnerHTML={getMarkup()} >
     </div>
   </div>
 )
