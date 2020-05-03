@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react'
 import MarkDownEditor from './markdown-editor'
+import marked from 'marked'
 
 import 'normalize.css'
 import './css/style.css'
@@ -19,7 +20,7 @@ class App extends Component {
     }
 
     this.getMarkup = (e) => {
-      return {__html: this.state.value}
+      return {__html: marked(this.state.value)}
     }
   }
 
