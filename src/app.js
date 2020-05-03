@@ -1,6 +1,7 @@
 'use strict'
 
 import React, { Component } from 'react'
+import MarkDownEditor from './markdown-editor'
 
 import './css/style.css'
 
@@ -12,26 +13,18 @@ class App extends Component {
       value: ''
     }
 
-    this.handleSubmit = (e) => {
-      e.preventDefault()
-      this.setState({
-        value: e.target.textarea.value
-      })
+    this.handleChange = (e) => {
+      this.setState({ value: e.target.value })
     }
   }
 
 
   render() {
     return (
-      <div className='editor'>
-        <form onSubmit={this.handleSubmit}>
-          <textarea name='textarea' />
-          <button type='submit' >Renderizar markup</button>
-        </form>
-        <div className='view'>
-          {this.state.value}
-        </div>
-      </div>
+      <MarkDownEditor
+        value={this.state.value}
+        handleChange={this.handleChange}
+      />
     )
   }
 }
