@@ -8,7 +8,10 @@ import './css/style.css'
 
 import('highlight.js').then((hljs) => {
   marked.setOptions({
-    highlight: (code) => {
+    highlight: (code, lang) => {
+      if (lang && hljs.getLanguage(lang)) {
+        return hljs.highlight(lang, code).value
+      }
       return hljs.highlightAuto(code).value
     }
   })
