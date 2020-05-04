@@ -2,14 +2,15 @@
 
 import React, { PropTypes } from 'react'
 
-const MarkDownEditor = ({onSave }) => (
+const MarkDownEditor = ({ isSaving}) => (
     <header className="editor-header">
-      <button onClick={onSave} className="save">SALVAR</button>
+      <p className="save-message">{isSaving ? 'Salvando...' : 'salvo!'}</p>
+      
     </header>
 )
 
 MarkDownEditor.propTypes = {
-    onSave: PropTypes.func.isRequired,
+    isSaving: PropTypes.bool.isRequired,
 }
 
 export default MarkDownEditor
