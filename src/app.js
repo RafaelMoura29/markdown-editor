@@ -37,14 +37,21 @@ class App extends Component {
       return { __html: marked(this.state.value) }
     }
     this.handleSave = () => {
-      localStorage.setItem('md', this.state.value)
-      this.setState({isSaving: false})
+      if (this.state.isSaving) {
+        localStorage.setItem('md', this.state.value)
+        this.setState({isSaving: false})
+      }
+    }
+
+    this.handleRemove = () => {
+      this.setState({value: ''})
+      localStorage.removeItem('md')
     }
   }
 
   componentDidMount() {
     const value = localStorage.getItem('md')
-    this.setState({ value })
+    this.setState({ value: value || '' })
   }
 
   componentDidUpdate() {
@@ -52,7 +59,7 @@ class App extends Component {
     this.timer = setTimeout(() => {
 
       this.handleSave()
-    } , 1000)
+    } , 300)
   }
 
   componentWillUnmount () {
@@ -66,6 +73,7 @@ class App extends Component {
         isSaving={this.state.isSaving}
         handleChange={this.handleChange}
         getMarkup={this.getMarkup}
+        handleRemove={this.handleRemove}
       />
     )
   }
