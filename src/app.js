@@ -1,7 +1,7 @@
 'use strict'
 
 import React, { Component } from 'react'
-import MarkDownEditor from 'components/markdown-editor'
+import MarkDownEditor from 'components/markdown-editor/'
 import marked from 'marked'
 
 import './css/style.css'
@@ -23,11 +23,11 @@ class App extends Component {
     super()
     this.state = {
       value: '',
-      isSaving: false
+      isSaving: null
     }
 
     this.handleChange = (e) => {
-      this.setState({ 
+      this.setState({
         value: e.target.value,
         isSaving: true
       })
@@ -39,13 +39,19 @@ class App extends Component {
     this.handleSave = () => {
       if (this.state.isSaving) {
         localStorage.setItem('md', this.state.value)
-        this.setState({isSaving: false})
+        this.setState({ isSaving: false })
       }
     }
-
     this.handleRemove = () => {
-      this.setState({value: ''})
+      this.setState({ value: '' })
       localStorage.removeItem('md')
+    }
+    this.handleCreate = () => {
+      this.setState({ value: '' })
+      this.textarea.focus()
+    }
+    this.textAreaRef = (node) => {
+      this.textarea = node
     }
   }
 
@@ -59,10 +65,10 @@ class App extends Component {
     this.timer = setTimeout(() => {
 
       this.handleSave()
-    } , 300)
+    }, 300)
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     clearInterval(this.timer)
   }
 
@@ -74,6 +80,8 @@ class App extends Component {
         handleChange={this.handleChange}
         getMarkup={this.getMarkup}
         handleRemove={this.handleRemove}
+        handleCreate={this.handleCreate}
+        textAreaRef={this.textAreaRef}
       />
     )
   }
