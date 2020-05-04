@@ -1,7 +1,7 @@
 'use strict'
 
 import React, { Component } from 'react'
-import MarkDownEditor from 'components/markdown-editor/'
+import MarkDownEditor from 'views/markdown-editor'
 import marked from 'marked'
 
 import './css/style.css'

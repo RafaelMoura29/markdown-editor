@@ -2,19 +2,17 @@
 
 import React, { PropTypes } from 'react'
 import Button from 'components/button'
+import SaveMessage from 'components/save-message'
 
 const MarkDownEditor = ({ isSaving, handleRemove, handleCreate }) => (
   <header className="editor-header">
-    {isSaving !== null &&
-      <p className="save-message">{isSaving ? 'Salvando...' : 'salvo!'}</p>
-    }
+    <SaveMessage isSaving={isSaving}/>
     <Button onClick={handleCreate} kind='success'>Criar Novo</Button>
     <Button onClick={handleRemove} kind='danger'>Remover </Button>
   </header>
 )
 
 MarkDownEditor.propTypes = {
-  isSaving: PropTypes.bool,
   handleRemove: PropTypes.func.isRequired,
   handleCreate: PropTypes.func.isRequired
 }

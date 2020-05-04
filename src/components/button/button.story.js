@@ -7,19 +7,19 @@ import Button from './index'
 const stories = storiesOf('Button', module)
 
 stories.addDecorator((story) => (
-<div style={{ display: 'flex', height: 40}}>
-        {story()}
-    </div>
+  <div style={{ display: 'flex', height: 40 }}>
+    {story()}
+  </div>
 ))
 
 stories.add('Button success', () => (
-    <Button onClick={action('success')} kind='success'>
-        Success
-    </Button>
+  <Button onClick={action('success')} kind='success'>
+    Success
+  </Button>
 ))
 
 stories.add('Button danger', () => (
-    <Button onClick={action('danger')} kind='danger'>
-        danger
-    </Button>
+  <Button onClick={action('danger')} kind='danger'>
+    danger
+  </Button>
 ))
