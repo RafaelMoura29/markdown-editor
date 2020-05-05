@@ -39,6 +39,7 @@ class App extends Component {
         isSaving: true
       })
     }
+    
 
     this.getMarkup = () => {
       return { __html: marked(this.state.value) }
@@ -76,7 +77,7 @@ class App extends Component {
         id: fileId
       })
     }
-    
+
   }
 
   componentDidMount () {
